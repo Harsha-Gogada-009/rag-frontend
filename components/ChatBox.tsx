@@ -51,21 +51,21 @@ export default function ChatBox() {
   };
 
   return (
-    <div className="bg-white rounded-xl shadow-sm border flex flex-col h-[520px]">
+    <div className="bg-white/95 backdrop-blur-md rounded-2xl shadow-2xl border border-indigo-200/30 flex flex-col h-[520px]">
       {/* Header */}
-      <div className="border-b px-4 py-3">
-        <h2 className="font-semibold text-gray-800">
+      <div className="border-b border-indigo-200/30 px-6 py-4 bg-gradient-to-r from-indigo-50 to-purple-50">
+        <h2 className="font-bold text-slate-800 text-lg">
           💬 Ask Your Documents
         </h2>
-        <p className="text-xs text-gray-500">
+        <p className="text-xs text-slate-600 mt-1">
           Responses are generated using uploaded files
         </p>
       </div>
 
       {/* Messages */}
-      <div className="flex-1 overflow-y-auto p-4 space-y-4 bg-gray-50">
+      <div className="flex-1 overflow-y-auto p-6 space-y-4 bg-gradient-to-b from-slate-50 to-indigo-50/30">
         {messages.length === 0 && !loading && (
-          <p className="text-sm text-gray-400 text-center mt-10">
+          <p className="text-sm text-slate-400 text-center mt-10 font-medium">
             Ask a question to start chatting with your documents
           </p>
         )}
@@ -73,10 +73,10 @@ export default function ChatBox() {
         {messages.map((msg, idx) => (
           <div
             key={idx}
-            className={`max-w-[75%] px-4 py-2 rounded-xl text-sm leading-relaxed ${
+            className={`max-w-[75%] px-5 py-3 rounded-2xl text-sm leading-relaxed shadow-md ${
               msg.role === "user"
-                ? "ml-auto bg-blue-600 text-white"
-                : "mr-auto bg-white border text-gray-800"
+                ? "ml-auto bg-gradient-to-r from-indigo-600 to-purple-600 text-white"
+                : "mr-auto bg-white border border-indigo-100 text-slate-800 shadow-sm"
             }`}
           >
             {msg.content}
@@ -84,19 +84,20 @@ export default function ChatBox() {
         ))}
 
         {loading && (
-          <div className="text-sm text-gray-400 italic">
+          <div className="text-sm text-slate-500 italic font-medium flex items-center gap-2">
+            <span className="animate-pulse">💭</span>
             Thinking…
           </div>
         )}
       </div>
 
       {/* Input */}
-      <div className="border-t p-3 flex gap-2 bg-white">
+      <div className="border-t border-indigo-200/30 p-4 flex gap-3 bg-white/80 backdrop-blur-sm">
         <input
           value={input}
           onChange={(e) => setInput(e.target.value)}
           placeholder="Ask a question about your documents…"
-          className="flex-1 border rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+          className="flex-1 border-2 border-indigo-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all bg-white/90"
           onKeyDown={(e) => {
             if (e.key === "Enter") sendMessage();
           }}
@@ -104,8 +105,8 @@ export default function ChatBox() {
         <button
           onClick={sendMessage}
           disabled={loading}
-          className="bg-blue-600 hover:bg-blue-700 disabled:opacity-50
-                     text-white px-4 py-2 rounded-lg text-sm transition"
+          className="bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 disabled:opacity-50 disabled:cursor-not-allowed
+                     text-white px-6 py-3 rounded-xl text-sm font-semibold transition-all duration-200 shadow-lg hover:shadow-xl transform hover:scale-105"
         >
           Send
         </button>

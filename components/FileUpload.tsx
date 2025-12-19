@@ -45,7 +45,7 @@ export default function FileUpload() {
     <div className="space-y-4">
       {/* Upload box */}
       <div
-        className="border-2 border-dashed rounded-xl p-8 text-center cursor-pointer bg-gray-50 hover:bg-gray-100 transition"
+        className="border-2 border-dashed border-indigo-400/50 rounded-2xl p-12 text-center cursor-pointer bg-gradient-to-br from-indigo-500/10 via-purple-500/10 to-cyan-500/10 backdrop-blur-sm hover:from-indigo-500/20 hover:via-purple-500/20 hover:to-cyan-500/20 hover:border-indigo-400 transition-all duration-300 shadow-xl"
         onClick={() => inputRef.current?.click()}
       >
         <input
@@ -57,37 +57,41 @@ export default function FileUpload() {
           onChange={(e) => handleFiles(e.target.files)}
         />
 
-        <p className="text-lg font-medium text-gray-700">
+        <div className="text-5xl mb-4">📤</div>
+        <p className="text-xl font-semibold text-white mb-2">
           Click to upload files
         </p>
-        <p className="text-sm text-gray-500 mt-1">
+        <p className="text-sm text-slate-300 mt-1">
           PDF or Python (.py) files supported
         </p>
       </div>
 
       {/* Selected files */}
       {files.length > 0 && (
-        <div className="bg-white border rounded-xl p-4 space-y-3">
-          <h3 className="font-medium text-gray-800">
+        <div className="bg-white/95 backdrop-blur-md border border-indigo-200/30 rounded-2xl p-6 space-y-4 shadow-2xl">
+          <h3 className="font-semibold text-slate-800 text-lg">
             Selected files
           </h3>
 
-          <ul className="text-sm text-gray-600 space-y-1">
+          <ul className="text-sm text-slate-700 space-y-2 bg-slate-50 rounded-lg p-4">
             {files.map((file, idx) => (
-              <li key={idx}>📄 {file.name}</li>
+              <li key={idx} className="flex items-center gap-2">
+                <span className="text-indigo-600">📄</span>
+                <span className="font-medium">{file.name}</span>
+              </li>
             ))}
           </ul>
 
           <button
             onClick={uploadFiles}
             disabled={loading}
-            className="bg-blue-600 text-white px-4 py-2 rounded-lg text-sm hover:bg-blue-700 disabled:opacity-50"
+            className="w-full bg-gradient-to-r from-indigo-600 to-purple-600 text-white px-6 py-3 rounded-xl text-sm font-semibold hover:from-indigo-700 hover:to-purple-700 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200 shadow-lg hover:shadow-xl transform hover:scale-[1.02]"
           >
             {loading ? "Uploading..." : "Upload files"}
           </button>
 
           {message && (
-            <p className="text-sm text-gray-700">{message}</p>
+            <p className="text-sm font-medium text-slate-700 bg-slate-100 rounded-lg p-3">{message}</p>
           )}
         </div>
       )}
