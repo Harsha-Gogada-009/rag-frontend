@@ -6,30 +6,41 @@ type LayoutProps = {
 
 export default function Layout({ children }: LayoutProps) {
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen flex flex-col bg-gradient-to-br from-gray-50 to-gray-100">
       {/* Header */}
-      <header className="border-b bg-white">
-        <div className="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
-          <h1 className="text-xl font-semibold text-gray-800">
-            RAG System
-          </h1>
-          <span className="text-sm text-gray-500">
-            Document Q&A
+      <header className="bg-white border-b">
+        <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+          <div>
+            <h1 className="text-xl font-bold text-gray-900">
+              📄 RAG System
+            </h1>
+            <p className="text-xs text-gray-500">
+              Document Question Answering
+            </p>
+          </div>
+
+          <span className="text-sm text-gray-600">
+            Powered by FAISS & LLMs
           </span>
         </div>
       </header>
 
       {/* Main content */}
       <main className="flex-1">
-        <div className="max-w-6xl mx-auto px-4 py-8">
+        <div className="max-w-6xl mx-auto px-6 py-10">
           {children}
         </div>
       </main>
 
       {/* Footer */}
-      <footer className="border-t bg-white">
-        <div className="max-w-6xl mx-auto px-4 py-4 text-sm text-gray-500">
-          © {new Date().getFullYear()} RAG System
+      <footer className="bg-white border-t">
+        <div className="max-w-6xl mx-auto px-6 py-4 flex flex-col sm:flex-row items-center justify-between text-sm text-gray-500">
+          <span>
+            © {new Date().getFullYear()} RAG System
+          </span>
+          <span className="mt-2 sm:mt-0">
+            Built with FastAPI · FAISS · Next.js
+          </span>
         </div>
       </footer>
     </div>
