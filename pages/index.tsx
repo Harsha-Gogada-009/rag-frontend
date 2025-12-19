@@ -6,7 +6,7 @@ export default function Home() {
     <div className="space-y-12">
       {/* Hero Section */}
       <section className="text-center max-w-3xl mx-auto">
-        <h2 className="text-4xl font-bold text-white drop-shadow-lg mb-4 bg-gradient-to-r from-cyan-400 via-indigo-400 to-purple-400 bg-clip-text text-transparent">
+        <h2 className="text-4xl font-bold text-white drop-shadow-lg mb-4 bg-gradient-to-r from-blue-400 via-blue-300 to-slate-300 bg-clip-text text-transparent">
           Upload documents & ask questions
         </h2>
         <p className="text-slate-200 mt-3 text-lg font-light">
